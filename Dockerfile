@@ -1,4 +1,4 @@
-FROM rust:1.74.1 as builder
+FROM rust:1.75.0 as builder
 WORKDIR /usr/src/sanity-s3-backup
 COPY . .
 RUN cargo install --path .
