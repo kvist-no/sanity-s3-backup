@@ -1,7 +1,9 @@
-FROM rust:1.75.0 as builder
+FROM rust:1.87 AS builder
 WORKDIR /usr/src/sanity-s3-backup
 COPY . .
-RUN cargo install --path .
+# --locked builds the committed Cargo.lock instead of resolving the newest
+# crates, some of which no longer parse on older toolchains.
+RUN cargo install --path . --locked
 
 FROM debian:bookworm-slim
 
