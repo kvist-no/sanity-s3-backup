@@ -1,4 +1,4 @@
-FROM rust:1.87 AS builder
+FROM rust:1.98 AS builder
 WORKDIR /usr/src/sanity-s3-backup
 COPY . .
 # --locked builds the committed Cargo.lock instead of resolving the newest
