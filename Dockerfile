@@ -11,8 +11,7 @@ RUN cargo install --path . --locked
 
 FROM debian:bookworm-slim
 
-RUN apt-get update && apt-get install -y --no-install-recommends openssl ca-certificates \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt update && apt install -y openssl ca-certificates
 
 COPY --from=builder /usr/local/cargo/bin/sanity-s3-backup /usr/local/bin/sanity-s3-backup
 CMD ["sanity-s3-backup"]
