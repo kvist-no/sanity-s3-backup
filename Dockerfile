@@ -1,4 +1,4 @@
-FROM rust:1.87 AS builder
+FROM rust:1.99 AS builder
 
 # Refresh trust before Cargo downloads dependencies.
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates \
