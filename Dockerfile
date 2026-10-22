@@ -1,4 +1,8 @@
 FROM rust:1.87 AS builder
+
+# Refresh trust before Cargo downloads dependencies.
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
 WORKDIR /usr/src/sanity-s3-backup
 COPY . .
 # --locked builds the committed Cargo.lock instead of resolving the newest
